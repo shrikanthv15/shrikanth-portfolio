@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0ea5a4;
+  --color-darkbg: #0b1220;
+}
+
+/* tiny custom vars */
+:root { --glass: rgba(255,255,255,0.04); }
+
+/* optional container helper */
+.container { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* small visual helpers */
+a { color: inherit; }
