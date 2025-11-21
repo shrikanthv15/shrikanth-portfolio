@@ -2,8 +2,9 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-darkbg/80 border-t border-white/6 mt-12 py-8">
-      <div className="container px-6 text-center text-slate-400">Designed & Built by Shrikanth Vilvadrinath | AI/ML Engineer • © {new Date().getFullYear()}</div>
+    <footer className="py-8 text-center text-slate-500 text-sm border-t border-white/5 bg-darkbg/50 backdrop-blur-sm">
+      <p>© {new Date().getFullYear()} Shrikanth Vilvadrinath. All rights reserved.</p>
+      <p className="mt-2">Built with React, Tailwind CSS & Framer Motion</p>
     </footer>
   );
 }

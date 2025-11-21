@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { GraduationCap, MapPin, Calendar } from "lucide-react";
 
 const education = [
   {
     degree: "Master of Science in Data Science",
     institution: "University of Maryland, College Park",
-    period: "August 2024 -  May 2026",
+    period: "August 2024 - May 2026",
     gpa: "4.0/4.0",
     location: "College Park, MD, USA",
     achievements: [
@@ -19,65 +20,82 @@ const education = [
     gpa: "3.5/4",
     location: "Chennai, India",
     achievements: [
-      "Python, DSA Competition Rank 5 in Programming Competition conducted by IITM Madras BSc Programming, Data Structures And Algorithms using Python course.",
-      "NumPy Library Successfully completed Online Proctored Exam for Machine Learning Techniques and Displaying Proficiency in NumPy Library",
-      "Core member of the Discourse Forum and Discord Help Team at IIT Madras, providing guidance to peers and enhancing community engagement",
+      "Rank 5 in Programming Competition (DSA using Python)",
+      "Successfully completed Online Proctored Exam for Machine Learning Techniques",
+      "Core member of the Discourse Forum and Discord Help Team"
     ]
   },
   {
     degree: "Bachelor Of Engineering in Electronics and Communication",
     institution: "Vishwakarma Government Engineering College",
-    period: "September 2020 -  June 2024",
+    period: "September 2020 - June 2024",
     gpa: "3.5/4.0",
     location: "Ahmedabad, India",
     achievements: [
-      "Core Media Team Member Co-led the creation and editorial process of college and departmental newspapers, resulting in improved content quality and increased readership",
-      
+      "Co-led the creation and editorial process of college and departmental newspapers"
     ]
   }
 ];
 
 export default function Education() {
   return (
-    <section id="education" className="py-12">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} 
-        whileInView={{ opacity: 1, y: 0 }} 
-        viewport={{ once: true }} 
+    <section id="education" className="py-20 relative">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-bold">Education</h2>
-        <div className="mt-6 space-y-6">
-          {education.map((edu, i) => (
-            <div key={i} className="p-6 bg-[rgba(255,255,255,0.02)] rounded-lg border border-white/6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-primary">{edu.degree}</h3>
-                  <p className="text-slate-300 font-medium">{edu.institution}</p>
-                  <p className="text-sm text-slate-400">{edu.location}</p>
-                </div>
-                <div className="mt-2 md:mt-0 md:text-right">
-                  <div className="text-sm text-slate-400">{edu.period}</div>
-                  <div className="text-sm font-medium text-primary">GPA: {edu.gpa}</div>
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-1 gap-4 mt-4">
-               
-                
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+            Education
+          </span>
+        </h2>
+
+        <div className="space-y-8">
+          {education.map((edu, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="p-8 bg-slate-900/50 border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all duration-300"
+            >
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-200 mb-2">Achievements</h4>
-                  <ul className="space-y-1">
-                    {edu.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="text-xs text-slate-300 flex items-start">
-                        <span className="text-primary mr-2">•</span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex items-center gap-3 mb-2">
+                    <GraduationCap className="text-cyan-400" size={24} />
+                    <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
+                  </div>
+                  <p className="text-lg text-slate-300 font-medium pl-9">{edu.institution}</p>
+                </div>
+
+                <div className="flex flex-col md:items-end gap-1 text-slate-400 text-sm pl-9 md:pl-0">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={14} />
+                    <span>{edu.period}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} />
+                    <span>{edu.location}</span>
+                  </div>
+                  <div className="text-cyan-400 font-semibold mt-1">GPA: {edu.gpa}</div>
                 </div>
               </div>
-            </div>
+
+              <div className="pl-9">
+                <h4 className="text-sm font-semibold text-slate-400 mb-3 uppercase tracking-wider">Achievements</h4>
+                <ul className="space-y-2">
+                  {edu.achievements.map((achievement, i) => (
+                    <li key={i} className="flex items-start gap-2 text-slate-300 text-sm leading-relaxed">
+                      <span className="mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0" />
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>
